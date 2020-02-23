@@ -1,6 +1,8 @@
 module.exports = function getSeason(date) {
-  
-  if (date == undefined) {
+  if (!date instanceof Date) {
+    throw Error("Error");
+  }
+  if (date == undefined || (date - new Date()) == 0) {
     return 'Unable to determine the time of year!';
   } else if (date.getMonth() == 0 || date.getMonth() == 1 || date.getMonth() == 11) {
     return "winter";
@@ -10,8 +12,5 @@ module.exports = function getSeason(date) {
     return "summer";
   } else if (date.getMonth() == 8 || date.getMonth() == 9 || date.getMonth() == 10) {
     return "autumn";
-  } else if (typeof(month) == "function" || typeof(month) == "array" || typeof(month) == "foo" ) {
-    throw Error("Error");
   }
-  
 };
